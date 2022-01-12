@@ -1,6 +1,7 @@
 name: Test Extension
 on: [push, pull_request]
 
+jobs:
   test_os:
     name: Test
     strategy:
