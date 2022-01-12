@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Test
+    name: Test Linux
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
@@ -21,6 +21,27 @@ jobs:
         run: sudo apt-get update
       - name: Install dependencies
         run: sudo apt install -y default-jre libgtk-3-0 libgbm-dev
+      - name: Compile Antlr
+        run: npm run compile
+      - name: Run headless test
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: npm test
+  test:
+    name: Test Mac/Windows
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install npm dependencies
+        run: npm install
       - name: Compile Antlr
         run: npm run compile
       - name: Run headless test
