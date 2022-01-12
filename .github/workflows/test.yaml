@@ -2,7 +2,7 @@ name: Test Extension
 on: [push, pull_request]
 
 jobs:
-  test:
+  test_linux:
     name: Test Linux
     strategy:
       matrix:
@@ -27,7 +27,8 @@ jobs:
         uses: GabrielBB/xvfb-action@v1
         with:
           run: npm test
-  test:
+
+  test_os:
     name: Test Mac/Windows
     strategy:
       matrix:
