@@ -8,7 +8,7 @@ import * as assert from 'assert';
 import { VeribleCompiler } from '../compiling/VeribleCompiler';
 import { getPathFromUri } from '../utils/common';
 
-const testFolderLocation = '../../src/test/test-files/VeribleCompiler.test';
+const testFolderLocation = path.join('..','..','src','test','test-files','VeribleCompiler.test');
 
 let diagnosticCollection: Map<string, Diagnostic[]>;
 const documentCompiler = new VeribleCompiler(undefined, undefined, path.join(__dirname, testFolderLocation), undefined, undefined);
