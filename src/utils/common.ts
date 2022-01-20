@@ -20,6 +20,8 @@ export function getPathFromUri(uri: string, rootPath: string): string {
 
     let matches;
     const lRootPath = rootPath.replace(/\\/g, '/');
+    console.log("parsedUri.path: " + parsedUri.path)
+    console.log("lRootPath: " + lRootPath)
     const regex = new RegExp(`/?${lRootPath}(.*)`);
     if ((matches = regex.exec(parsedUri.path)) != null && matches.length > 1) {
         return lRootPath + matches[1];
