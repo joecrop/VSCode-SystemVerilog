@@ -8,7 +8,7 @@ import * as assert from 'assert';
 import { VeribleCompiler } from '../compiling/VeribleCompiler';
 import { getPathFromUri } from '../utils/common';
 
-const testFolderLocation = path.join('..','..','src','test','test-files','VeribleCompiler.test');
+const testFolderLocation = '../../src/test/test-files/VeribleCompiler.test';
 
 let diagnosticCollection: Map<string, Diagnostic[]>;
 const documentCompiler = new VeribleCompiler(undefined, undefined, path.join(__dirname, testFolderLocation), undefined, undefined);
@@ -25,11 +25,9 @@ suite('VeribleCompiler Tests', () => {
         const document: TextDocument = castTextDocument(documentWorkspace);
 
         const compiledFilePath = getPathFromUri(document.uri, __dirname);
-        console.log("compiledFilePath: " + compiledFilePath)
         const stderrFile = path.join(__dirname, testFolderLocation, 'foo.stdout.txt');
 
         let stdout = fs.readFileSync(stderrFile).toString();
-        console.log(stdout);
         stdout = stderrSetUp(stdout, 'foo.sv', filePath);
 
         documentCompiler.parseDiagnostics(undefined, stdout, undefined, document, compiledFilePath, diagnosticCollection); // prettier-ignore
@@ -61,6 +59,7 @@ suite('VeribleCompiler Tests', () => {
 
         let stdout = fs.readFileSync(stderrFile).toString();
         stdout = stderrSetUp(stdout, 'foo_error.sv', filePath);
+        console.log(stdout);
 
         documentCompiler.parseDiagnostics(undefined, stdout, undefined, document, compiledFilePath, diagnosticCollection); // prettier-ignore
 
