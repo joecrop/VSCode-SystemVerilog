@@ -134,7 +134,9 @@ export abstract class DocumentCompiler {
     ): void {
         let diagnostic: Diagnostic;
         let diagnostics;
-
+        console.log("diagnosticData.filePath: " +diagnosticData.filePath)
+        console.log("compiledDocument.uri: " + compiledDocument.uri)
+        console.log("this.workspaceRootPath: " + this.workspaceRootPath)
         if (diagnosticData.filePath.localeCompare(getPathFromUri(compiledDocument.uri, this.workspaceRootPath)) === 0) {
             // Set `diagnostic`'s range
             const range: Range = getLineRange(
