@@ -24,7 +24,7 @@ suite('VeribleCompiler Tests', () => {
 
         const document: TextDocument = castTextDocument(documentWorkspace);
 
-        const compiledFilePath = path.dirname(filePath).split(path.sep).pop();
+        const compiledFilePath = getPathFromUri(document.uri, __dirname);
 
         const stderrFile = path.join(__dirname, testFolderLocation, 'foo.stdout.txt');
 
@@ -54,7 +54,7 @@ suite('VeribleCompiler Tests', () => {
 
         const document: TextDocument = castTextDocument(documentWorkspace);
 
-        const compiledFilePath = path.dirname(filePath).split(path.sep).pop();
+        const compiledFilePath = getPathFromUri(document.uri, __dirname);
 
         const stderrFile = path.join(__dirname, testFolderLocation, 'foo_error.stdout.txt');
 
