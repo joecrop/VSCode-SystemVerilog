@@ -12,7 +12,8 @@ export function getPathFromUri(uri: string, rootPath: string): string {
         return '';
     }
 
-    const lUri = decodeURIComponent(uri); // convert hexadecimal characters to ASCII
+    const nUri = uri.replace(/\\/g, '/');
+    const lUri = decodeURIComponent(nUri); // convert hexadecimal characters to ASCII
     const parsedUri = uriJs.parse(lUri);
     if (!parsedUri.path) {
         return '';
