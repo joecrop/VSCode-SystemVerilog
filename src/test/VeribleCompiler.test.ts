@@ -29,6 +29,7 @@ suite('VeribleCompiler Tests', () => {
         const stderrFile = path.join(__dirname, testFolderLocation, 'foo.stdout.txt');
 
         let stdout = fs.readFileSync(stderrFile).toString();
+        console.log(stdout);
         stdout = stderrSetUp(stdout, 'foo.sv', filePath);
 
         documentCompiler.parseDiagnostics(undefined, stdout, undefined, document, compiledFilePath, diagnosticCollection); // prettier-ignore
