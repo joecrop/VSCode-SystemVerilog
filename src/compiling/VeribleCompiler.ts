@@ -81,6 +81,7 @@ export class VeribleCompiler extends DocumentCompiler {
 
             // Push Diagnostic
             if (!isDiagnosticDataUndefined(diagnosticData)) {
+                console.log(diagnosticData.filePath)
                 if (visitedDocuments.has(diagnosticData.filePath)) {
                     this.publishDiagnosticForDocument(compiledDocument, false, diagnosticData, collection);
                 } else {
