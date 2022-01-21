@@ -24,13 +24,12 @@ suite('VeribleCompiler Tests', () => {
 
         const document: TextDocument = castTextDocument(documentWorkspace);
 
-        const compiledFilePath = getPathFromUri(document.uri, __dirname);
         const stderrFile = path.join(__dirname, testFolderLocation, 'foo.stdout.txt');
 
         let stdout = fs.readFileSync(stderrFile).toString();
         stdout = stderrSetUp(stdout, 'foo.sv', filePath);
 
-        documentCompiler.parseDiagnostics(undefined, stdout, undefined, document, compiledFilePath, diagnosticCollection); // prettier-ignore
+        documentCompiler.parseDiagnostics(undefined, stdout, undefined, document, filePath, diagnosticCollection); // prettier-ignore
 
         const collection = diagnosticCollection.get(document.uri);
         assert.strictEqual(collection.length, 11);
